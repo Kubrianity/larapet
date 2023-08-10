@@ -17,7 +17,7 @@ class UserController extends Controller
         $inputFields['password'] = bcrypt($inputFields['password']);
         $user = User::create($inputFields);
         auth()-> login($user);
-        return redirect('/');
+        return redirect('/profile');
     }
     public function login(Request $request) {
         $inputFields = $request-> validate([ 
@@ -27,14 +27,28 @@ class UserController extends Controller
         if (auth()-> attempt([
             'name' => $inputFields['login_name'], 
             'password' => $inputFields['login_password']
-            ])
+        ])
             ) {
             $request-> session()-> regenerate();
-            }
-        return redirect('/');
+            return redirect('/profile');
+        }
+        else {
+            return redirect('/');
+        }
     }
     public function logout() {
         auth()-> logout();
         return redirect('/');
+    }
+    public function profile() {
+        if (auth()-> check()) {
+            $pets = [];
+            $username = auth()-> user()-> name;
+            $pets = auth()-> user()-> userPets()-> latest()-> get();
+            return view('profile', ['username' => 'username', 'pets' => $pets]);
+        }
+        else {
+            return redirect('/');
+        }
     }
 }
