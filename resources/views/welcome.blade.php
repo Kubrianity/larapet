@@ -9,14 +9,33 @@
   </head>
     <body>
       <div>
-        <h2>Signup</h2>
-        <form action="/signup" method="POST">
+        @auth
+        <p> Welcome! </p>
+        <form action="/logout" method="POST">
           @csrf
-          <input name="name" type="text" placeholder="name">
-        	<input name="email" type="text" placeholder="email">
-          <input name="password" type="password" placeholder="password">
-          <button>Register</button>
-    		</form>
+          <button>Log out</button>
+        </form>  
+        @else
+        <h2>Signup</h2>
+        <div>
+          <form action="/signup" method="POST">
+            @csrf
+            <input name="name" type="text" placeholder="name">
+        	  <input name="email" type="text" placeholder="email">
+            <input name="password" type="password" placeholder="password">
+            <button>Register</button>
+    		  </form>
+        </div>
+        <div>
+          <h2>Login</h2>
+          <form action="/login" method="POST">
+            @csrf
+            <input name="login_name" type="text" placeholder="name">
+            <input name="login_password" type="password" placeholder="password">
+            <button>Log in</button>
+    		  </form>
+        </div>
+        @endauth
   		</div>
     </body>
 </html>
