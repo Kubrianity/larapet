@@ -9,21 +9,6 @@
   </head>
     <body>
       <div>
-        @auth
-        <p> Welcome! </p>
-        <form action="/logout" method="POST">
-          @csrf
-          <button>Log out</button>
-        </form> 
-        <h2>Register your pawl friend</h2>
-        <form action="/register-pet" method="POST">
-            @csrf
-            <input name="name" type="text" placeholder="name">
-        	  <input name="breed" type="text" placeholder="breed">
-            <input name="age" type="number" placeholder="age">
-            <button>Register</button>
-    		  </form>
-        @else
         <h2>Signup</h2>
         <div>
           <form action="/signup" method="POST">
@@ -43,7 +28,6 @@
             <button>Log in</button>
     		  </form>
         </div>
-        @endauth
   		</div>
     </body>
 </html>
