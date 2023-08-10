@@ -26,8 +26,8 @@ class UserController extends Controller
         ]);
         if (auth()-> attempt([
             'name' => $inputFields['login_name'], 
-            'password' => $inputFields['login_password'
-            ]])
+            'password' => $inputFields['login_password']
+            ])
             ) {
             $request-> session()-> regenerate();
             }
