@@ -22,4 +22,4 @@ Route::post('/signup', [UserController::class, 'signup']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
 
-Route::post('/register-pet', [PetController::class, 'registerPet']);
+Route::post('/pets', [PetController::class, 'registerPet']);

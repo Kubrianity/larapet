@@ -13,7 +13,7 @@
     <button>Log out</button>
   </form> 
   <h2>Register your pawl friend</h2>
-  <form action="/register-pet" method="POST">
+  <form action="/pets" method="POST">
     @csrf
     <input name="name" type="text" placeholder="name">
     <input name="breed" type="text" placeholder="breed">
