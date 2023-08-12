@@ -45,7 +45,7 @@ class UserController extends Controller
             $pets = [];
             $username = auth()-> user()-> name;
             $pets = auth()-> user()-> userPets()-> latest()-> get();
-            return view('profile', ['username' => 'username', 'pets' => $pets]);
+            return view('profile', ['username' => $username, 'pets' => $pets]);
         }
         else {
             return redirect('/');
