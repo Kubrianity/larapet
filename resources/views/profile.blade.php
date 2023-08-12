@@ -12,7 +12,7 @@
     @csrf
     <button>Log out</button>
   </form> 
-  <h2>Register your pawl friend</h2>
+  <h2>Register your paw friend</h2>
   <form action="/pets" method="POST">
     @csrf
     <input name="name" type="text" placeholder="name">
@@ -20,7 +20,7 @@
     <input name="age" type="number" placeholder="age">
     <button>Register</button>
   </form>
-  <h2>Your registered pawl friends</h2>
+  <h2>Your registered paw friends</h2>
   @foreach($pets as $pet)
   <div>
     <span> {{ $pet['name'] }} </span>
