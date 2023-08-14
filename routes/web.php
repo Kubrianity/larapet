@@ -23,3 +23,4 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
 
 Route::post('/pets', [PetController::class, 'registerPet']);
+Route::get('/pets', [PetController::class, 'displayPets']);
