@@ -21,6 +21,7 @@ Route::get('/profile', [UserController::class, 'profile']);
 Route::post('/signup', [UserController::class, 'signup']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/pet/{id}', [UserController::class, 'adopt']);
 
 Route::post('/pets', [PetController::class, 'registerPet']);
 Route::get('/pets', [PetController::class, 'displayPets']);

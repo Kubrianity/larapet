@@ -19,7 +19,8 @@ class CreatePetsTable extends Migration
             $table->string('name');
             $table->string('breed');
             $table->integer('age');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained('laravel.users');
+            $table->foreignId('adopter_id')->nullable()->constrained('laravel.users');
         });
     }
 

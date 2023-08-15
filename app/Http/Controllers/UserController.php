@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pet;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -38,12 +39,22 @@ class UserController extends Controller
     public function profile() {
         if (auth()-> check()) {
             $pets = [];
+            $adopted_pets = [];
             $username = auth()-> user()-> name;
             $pets = auth()-> user()-> userPets()-> latest()-> get();
-            return view('profile', ['username' => $username, 'pets' => $pets]);
+            $adopted_pets = auth()-> user()-> adoptedPets()-> latest()-> get();
+            return view('profile', ['username' => $username, 'pets' => $pets, 'adopted_pets' => $adopted_pets]);
         }
         else {
             return redirect('/');
         }
+    }
+    public function adopt($id) {
+        $user = auth()-> user();
+        $pet = Pet::where('id', $id)->first();
+        $pet-> adopter_id = $user->id;
+        $pet->save();
+        $user->save();
+        return redirect('/profile');
     }
 }
