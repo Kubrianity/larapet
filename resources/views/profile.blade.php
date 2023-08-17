@@ -28,6 +28,14 @@
     <span> {{ $pet['age'] }} </span>
   </div>
   @endforeach
+  <h2>Your adopted paw friends</h2>
+  @foreach($adopted_pets as $pet)
+  <div>
+    <span> {{ $pet['name'] }} </span>
+    <span> {{ $pet['breed'] }} </span>
+    <span> {{ $pet['age'] }} </span>
+  </div>
+  @endforeach
 </div>
 </body>
 </html>
