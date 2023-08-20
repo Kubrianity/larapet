@@ -53,6 +53,7 @@ class UserController extends Controller
         $user = auth()-> user();
         $pet = Pet::where('id', $id)->first();
         $pet-> adopter_id = $user->id;
+        $user->adopted_pets = $pet;
         $pet->save();
         $user->save();
         return redirect('/profile');

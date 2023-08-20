@@ -14,8 +14,12 @@ class PetController extends Controller
 }
     public function registerPet(PetRegisterFormRequest $request) {
         $inputFields = $request->validated();
-        $inputFields['user_id'] = auth()->id();
-        Pet::create($inputFields);
+        $user = auth()->user();
+        $inputFields['user_id'] = $user->id;
+        $createdPet = Pet::create($inputFields);
+        $user->registered_pets = $createdPet;
+        $createdPet->save();
+        $user->save();
         return back()->withInput();
     }
 }
